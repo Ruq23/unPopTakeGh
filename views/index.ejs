@@ -1,0 +1,149 @@
+<% layout('layouts/boilerplate') %> 
+
+
+
+    <div class="container" style="min-height: 100vh;">
+        <div class="row" id="row">
+          <div class="col">
+            <div class="one">
+            <div class="one-one">
+                <h6> YOUR INTERESTS </h6>
+                <% if(currentUser)  {%>
+                <ul>
+                  <% for (let i = 0; i < currentUser.interests.length; i++) { %>
+                    <li><%= currentUser.interests[i]  %></li>
+                    <!-- <li>UGC And Micro-Influence Marketing</li>
+                    <li>Live-Stream Shopping</li>
+                    <li>Coding</li>
+                    <li>Video Production</li>
+                    <li>Sustainability In A World That Consumes A Lot</li> -->
+                    <% } %>
+                </ul>
+                <% }else {%>
+                  <ul>
+                    <li>Login to access full features</li>
+                  </ul>
+                  <% } %>
+            </div>
+            <div class="one-two">
+                <h6> Communities </h6>
+                <ul>
+                    <li>Challeges women face in a man field profession .....</li>
+                    <li>Let's air out frustration on so many issues .....</li>
+                    <li>Unpopular takes about the dating scene in Lagos</li>
+                </ul>
+            </div>
+            <div class="one-three">
+              <% if(currentUser) {%>
+              <div class="irregular">
+                <img style="width: 70px; height: 70px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">
+                <img style="width: 70px; height: 70px; border-radius: 40px" alt="">
+              </div>
+              <form method="POST" action="/logout">
+                <img src="images/Logout.png" alt=""> <b> <a href="/logout">Logout</a> </b> <br>
+              </form>
+                <img src="images/User Add.png" alt=""> <b>Add Another Account</b> <br>
+                <img src="images/trash.png" alt=""> <b>Delete Account</b>
+                <% }else{ %>
+                  <div class="irregular">
+                    <p>Login to access full features</p>
+
+                  </div>
+                  <% } %>
+
+            </div>
+          </div>
+          </div>
+          <div class="col-6">
+             <div class="two">
+              <div class="two-one">
+                <b>Home</b>
+               <a href=""> <img src="images/search-status.png" alt=""> </a>
+              </div>
+              <div class="two-two">
+                <form action="" class="formm">
+                  <% if(currentUser) { %>
+                  <img style="width: 63px;height: 63px; border-radius: 40px" src="<%=currentUser.image.url %>" alt="">
+                <% }else { %>
+                  <img style="width: 63px;height: 63px; border-radius: 40px" src="#" alt="">
+                  <% } %>
+                <input type="text" name="" id="" placeholder="Unpopular Opinion?"> <br>
+                 <a href=""><img style="width: 15px;height: 15px; "class="smi" src="images/Link.png" alt=""> </a> 
+                  <a href=""> <img style="width: 15px;height: 15px" class="smi" src="images/File.png" alt=""> </a>
+                 <a href=""> <img style="width: 15px;height: 15px" class="smi" src="images/gallery.png" alt=""> </a>
+                 <a href=""> <img style="width: 15px;height: 15px" class="smi" src="images/Adjustment.png" alt=""> </a>
+                 <a href=""> <img style="width: 15px;height: 15px" class="smi" src="images/Calendar.png" alt=""> </a>
+                  <button class="bti"> <a style="color: white;" href="/post/new"> Post </a></button> 
+                  <hr>
+                </form>
+              </div>
+              <div class="two-three">
+                <ul>
+                 <a href=""><li>For You</li></a> 
+                  <a href=""><li>Following</li></a>
+                </ul>
+              </div>
+            <% for (let post of posts) { %>
+              <div class="two-four" style="position: relative; left: 5px; top: 30px">
+            <img style="border-radius: 55px;" src="<%=post.author[0].image.url %>" alt=""> <a id="two-four-one" href="/profile/<%=post.author[0]._id%>"> <b><%=post.author[0].username %> </b> </a><br>   
+               <a id="two-four-one" href="/post/<%=post._id%>"> <b class="two-four-one">Unpopular Take On <%=post.title%> -<span> #<%=post.hashtag%></span></b> </a>
+                <p style="width: 500px;"><%=post.body%></p>
+                  <form class="comment-form" action="/post/<%=post._id%>/comments" method="POST">
+                    <% if(currentUser){ %>
+                     <img style="width: 40px; height: 40px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">  <input type="text" name="comment[body]" id="body" placeholder="Comment"> <br>
+                     <% }else{ %>
+                     <img style="width: 40px; height: 40px; border-radius: 40px" src="#" alt="">  <input type="text" name="comment[body]" id="body" placeholder="Comment"> <br>
+                      <% } %>
+                  </form>
+                  <ul>
+                    <a href=""><li>Like</li></a>
+                    <a href=""><li>Share</li></a>
+                    <a href=""><li>Favourite</li></a>
+                    <a href=""><li>Comments</li></a>
+                  </ul>
+              </div>
+          <% } %> 
+
+              <!-- <div class="two-four">
+                <img src="images/Ellipse 12.png" alt="">  <b>Femi Salami </b> <br>
+                <b class="two-four-one">The Ideal Woman Every Man Wants <span> #Relationship #Dating</span></b>
+                <p style="width: 500px;">Lorem ipsum dolor sit amet consectetur. Scelerisque sed malesuada quis non. Id scelerisque nisl phasellus rhoncus. Diam donec gravida amet phasellus egestas tellus tempus consectetur at. Semper vel orci senectus sed ut fames. Dis tristique accumsan orci mus ullamcorper. Id ultrices in tristique quis gravida. Condimentum consequat sed lacus suscipit ut elementum sit in aliquet. Mauris ut venenatis risus id vel scelerisque habitant et lectus. Et dolor ac lobortis tempor mauris id cras phasellus id. Aliquam nunc nullam elementum tempor integer dolor aliquam dignissim. Faucibus sed turpis venenatis elementum erat volutpat amet lectus. Id id purus amet condimentum sit lectus. Semper orci interdum in ullamcorper phasellus lorem quis euismod. Pellentesque quam sed cursus sapien pulvinar pharetra facilisis.</p>
+                  <form class="comment-form" action="">
+                     <img src="images/Ellipse 14.png" alt="">  <input type="text" placeholder="Comment"> <br>
+                  </form>
+                  <ul>
+                    <a href=""><li>Like</li></a>
+                    <a href=""><li>Share</li></a>
+                    <a href=""><li>Favourite</li></a>
+                    <a href=""><li>1323 Comments</li></a>
+                  </ul>
+              </div> -->
+          </div> 
+          </div>
+          <div class="col" id="three">
+            <div class="sec-three-one">
+            <h6>You Might Be Interested</h6>
+            <hr>
+            <h6>Social AR/VR Experiences</h6>
+            <p>Augmented Reality(AR) And Virtual Reality(VR) Holds Tremendous Promise For Changing The Way Business And Consumers Operate And Has The Ability To Tranform Nearly Every Industry And Solve Many Real World Problems <br> Let's Talk About It ....</p>
+          </div>
+            <div class="sec-three-two"> 
+              <img src="images/Group 15.png" alt="">  
+              <button><b> Join </b></button>
+              <hr>
+            </div>
+            <div class="sec-three-three">
+              <img src="images/image 1.png" alt="">
+              <p class="non-link">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim odio aut magni quaerat eligendi vel quis ut, eos incidunt nam laboriosam laudantium quidem.</p>
+              <p class="link">https://stackoverflow.com/ <br> questions/4383117/how-can-fake-url-on-hover-and-right-click-copy-link-localtion-but-not-on-the-c</p>
+            </div>
+            <div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+</div>
+    

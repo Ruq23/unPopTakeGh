@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h1>Edit Your Profile</h1>
+    <form action="/profile/<%=user._id%>?_method=PUT " method="POST">
+        <div>
+         <label for="firstName">First Name</label>
+         <input type="text" name="firstName" id="firstName" value="<%=user.firstName%>" required>
+     </div>
+     <div>
+         <label for="lastName">Last Name</label>
+         <input type="text" name="lastName" id="lastName" value="<%=user.lastName%>" required>
+     </div>
+     <div>
+         <label for="aboutMe">About Me</label>
+         <input type="text" name="aboutMe" id="aboutMe" value="<%=user.aboutMe%>" >
+     </div>
+     <div>
+         <label for="location">Location</label>
+         <input type="text" name="location" id="location" value="<%=user.location%>"required>
+     </div>
+     <div>
+         <label for="interests"> Interests </label>
+          <select name="interests" id="interests" multiple>
+             <% for(let interest of interests) { %> 
+                 <option value="<%=interest%>" <%=user.interest === interest ? 'selected': '' %> ><%=interest%> </option>
+                 <% } %> 
+           </select>
+     </div>
+     <div>
+        <label for="image">Upload Image</label>
+        <input type="file" name="image" id="image" value="<%=user.image.filename%>" required>
+     </div>
+     <button>Submit</button>
+ </form>
+    
+</body>
+</html>

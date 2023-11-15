@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <title>unPopTake</title>
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="hero.html"><img class="nbi" src="/images/Logo.png" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse offset-1" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <img class="nli" id="nli-one" src="/images/Logo 2.png" alt="">
+                <a class="nav-link active pe-5 text-light" aria-current="page" href="/posts">Home</a>
+              </li>
+              <li class="nav-item">
+              <img class="nli" id="nli-two" src="/images/Logo 3.png" alt="">
+                <% if(currentUser) {%>
+                <a class="nav-link active pe-5 text-light" href="/profile/<%=currentUser._id %>">My Profile</a>
+                <% }else {%>
+                <a class="nav-link active pe-5 text-light" href="#">My Profile</a>
+                <% } %>
+              </li>
+              <li class="nav-item">
+              <img class="nli" id="nli-three" src="/images/Logo 4.png" alt="">
+                <a class="nav-link active pe-5 text-light" href="gadgets.html">Activity</a>
+              </li>
+    
+              <li class="nav-item">
+              <img class="nli" id="nli-four" src="/images/Logo 5.png" alt="">
+                <a class="nav-link active pe-5 text-light" href="">Settings</a>
+              </li>
+    
+              <li class="nav-item dropdown" id="nav-item-last">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/images/pp.jpg" alt="">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li> -->
+            </ul>
+        </div>
+          </div>
+        </div>
+      </nav>
+    <main>
+        <div class="container" style="min-height: 100vh;">
+            <div class="row" id="row">
+              <div class="col">
+                <div class="one">
+                <div class="one-one">
+                    <h6> YOUR INTERESTS </h6>
+                    <ul>
+                        <% for (let i = 0; i < currentUser.interests.length; i++) { %>
+                          <li><%= currentUser.interests[i]  %></li>
+                          <!-- <li>UGC And Micro-Influence Marketing</li>
+                          <li>Live-Stream Shopping</li>
+                          <li>Coding</li>
+                          <li>Video Production</li>
+                          <li>Sustainability In A World That Consumes A Lot</li> -->
+                          <% } %>
+                      </ul>
+                </div>
+                <div class="one-two">
+                    <h6> Communities </h6>
+                    <ul>
+                        <li>Challeges women face in a man field profession .....</li>
+                        <li>Let's air out frustration on so many issues .....</li>
+                        <li>Unpopular takes about the dating scene in Lagos</li>
+                    </ul>
+                </div>
+                <div class="one-three">
+                  <div class="irregular">
+                    <img style="width: 70px; height: 70px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">
+                  </div>
+                  <form action="/logout" method="POST">
+                    <img src="images/Logout.png" alt=""> <b> <a href="/logout">Logout</a> </b> <br>
+                  </form>
+                    <img src="images/User Add.png" alt=""> <b>Add Another Account</b> <br>
+                    <img src="images/trash.png" alt=""> <b>Delete Account</b>
+                </div>
+              </div>
+              </div>
+              <div class="col-6">
+                 <div class="two">
+                  <div class="two-four" style="position: relative; left: 5px; top: 30px">
+                <img style="border-radius: 55px;" src="<%=post.author[0].image.url %>" alt=""> <a id="two-four-one" href="/profile/<%=post.author[0]._id%>"> <b><%=post.author[0].username %> </b> </a><br>   
+                   <a id="two-four-one" href="/post/<%=post._id%>"> <b class="two-four-one">Unpopular Take On <%=post.title%> -<span> #<%=post.hashtag%></span></b> </a>
+                    <p style="width: 500px;"><%=post.body%></p>
+                    <% if(currentUser) { %> 
+                      <form class="comment-form" action="/post/<%=post._id%>/comments" method="POST">
+                         <img style="width: 40px; height: 40px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">  <input type="text" name="comment[body]" id="body" placeholder="Comment"> <br>
+                      </form>
+                      <% } %>
+                      <ul>
+                        <a href=""><li>Like</li></a>
+                        <a href=""><li>Share</li></a>
+                        <a href=""><li>Favourite</li></a>
+                        <a href=""><li>123 Comments</li></a>
+                      </ul>
+                  </div>
+
+                  <div>
+                    <h5>Comments</h5>
+
+                      <% for (let comment of post.comments) { %> 
+
+                        <div class="two-six">
+                              <img style="border-radius: 40px;" src="<%=comment.author.image.url %>" alt="">  <h6> <a style="text-decoration: none; color: black;" href="/profile/<%=comment.author._id%>"> <%=comment.author.username %> </a> </h6> <br>
+                              <b>View on <%=post.title %> </b> <b style="color: #4F7C4F; margin-left: 10px"> #<%=post.hashtag%> </b>
+                              <p><%=comment.body %>.</p>
+                        <% if( currentUser && comment.author.equals(currentUser._id)) { %> 
+                              <form action="/post/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <Button class="btn btn-sm btn-danger">Delete</Button>
+                            </form>
+                            <% } %>
+                          </div>
+
+                        <!-- <div class="card mb-3" >
+                      <div class="mb-3 card-body">
+                        <h5 class="card-title"><%=comment.author.username%></h5>
+                        <h5 class="card-title"><%=comment.name%></h5>
+                        <p class="starability-result" data-rating="<%=comment.rating%>">
+                          Rated: <%=comment.rating%> stars
+                        </p>
+                        <p class="card-text"><%=comment.body%></p>
+                        <% if( currentUser && comment.author.equals(currentUser._id)) { %> 
+                        <form action="/post/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                            <Button class="btn btn-sm btn-danger">Delete</Button>
+                        </form>
+                        <% } %>
+                      </div>
+                    </div> -->
+                      <% } %>
+                        
+                </div>
+    
+                  <!-- <div class="two-four">
+                    <img src="images/Ellipse 12.png" alt="">  <b>Femi Salami </b> <br>
+                    <b class="two-four-one">The Ideal Woman Every Man Wants <span> #Relationship #Dating</span></b>
+                    <p style="width: 500px;">Lorem ipsum dolor sit amet consectetur. Scelerisque sed malesuada quis non. Id scelerisque nisl phasellus rhoncus. Diam donec gravida amet phasellus egestas tellus tempus consectetur at. Semper vel orci senectus sed ut fames. Dis tristique accumsan orci mus ullamcorper. Id ultrices in tristique quis gravida. Condimentum consequat sed lacus suscipit ut elementum sit in aliquet. Mauris ut venenatis risus id vel scelerisque habitant et lectus. Et dolor ac lobortis tempor mauris id cras phasellus id. Aliquam nunc nullam elementum tempor integer dolor aliquam dignissim. Faucibus sed turpis venenatis elementum erat volutpat amet lectus. Id id purus amet condimentum sit lectus. Semper orci interdum in ullamcorper phasellus lorem quis euismod. Pellentesque quam sed cursus sapien pulvinar pharetra facilisis.</p>
+                      <form class="comment-form" action="">
+                         <img src="images/Ellipse 14.png" alt="">  <input type="text" placeholder="Comment"> <br>
+                      </form>
+                      <ul>
+                        <a href=""><li>Like</li></a>
+                        <a href=""><li>Share</li></a>
+                        <a href=""><li>Favourite</li></a>
+                        <a href=""><li>1323 Comments</li></a>
+                      </ul>
+                  </div> -->
+              </div> 
+              </div>
+              <div class="col" id="three">
+                <div class="sec-three-one">
+                <h6>You Might Be Interested</h6>
+                <hr>
+                <h6>Social AR/VR Experiences</h6>
+                <p>Augmented Reality(AR) And Virtual Reality(VR) Holds Tremendous Promise For Changing The Way Business And Consumers Operate And Has The Ability To Tranform Nearly Every Industry And Solve Many Real World Problems <br> Let's Talk About It ....</p>
+              </div>
+                <div class="sec-three-two"> 
+                  <img src="/images/Group 15.png" alt="">  
+                  <button><b> Join </b></button>
+                  <hr>
+                </div>
+                <div class="sec-three-three">
+                  <img src="/images/image 1.png" alt="">
+                  <p class="non-link">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim odio aut magni quaerat eligendi vel quis ut, eos incidunt nam laboriosam laudantium quidem.</p>
+                  <p class="link">https://stackoverflow.com/ <br> questions/4383117/how-can-fake-url-on-hover-and-right-click-copy-link-localtion-but-not-on-the-c</p>
+                </div>
+                <div>
+    
+                </div>
+    
+    
+              </div>
+            </div>
+    
+    </div>
+        
+    
+    </main>
+</body>
+</html>
+   

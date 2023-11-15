@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
+  <link rel="stylesheet" href="/stylesheets/container.css">
+  <link rel="stylesheet" href="/stylesheets/myprofile.css">
+  <title>Document</title>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="hero.html"><img class="nbi" src="/images/Logo.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse offset-1" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <img class="nli" id="nli-one" src="/images/Logo 2.png" alt="">
+            <a class="nav-link active pe-5 text-light" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+          <img class="nli" id="nli-two" src="/images/Logo 3.png" alt="">
+            <a class="nav-link active pe-5 text-light" href="clothing.html">My Profile</a>
+          </li>
+          <li class="nav-item">
+          <img class="nli" id="nli-three" src="/images/Logo 4.png" alt="">
+            <a class="nav-link active pe-5 text-light" href="gadgets.html">Activity</a>
+          </li>
+
+          <li class="nav-item">
+          <img class="nli" id="nli-four" src="/images/Logo 5.png" alt="">
+            <a class="nav-link active pe-5 text-light" href="">Settings</a>
+          </li>
+
+          <li class="nav-item dropdown" id="nav-item-last">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="/images/pp.jpg" alt="">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li> -->
+        </ul>
+    </div>
+      </div>
+    </div>
+  </nav>
+  <main>
+      <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="one">
+              <div class="one-one">
+                  <h6> YOUR INTERESTS </h6>
+                  <ul>
+                    <% for (let i = 0; i < currentUser.interests.length; i++) { %>
+                      <li><%= currentUser.interests[i]  %></li>
+                      <!-- <li>UGC And Micro-Influence Marketing</li>
+                      <li>Live-Stream Shopping</li>
+                      <li>Coding</li>
+                      <li>Video Production</li>
+                      <li>Sustainability In A World That Consumes A Lot</li> -->
+                      <% } %>
+                  </ul>
+              </div>
+              <div class="one-two">
+                  <h6> Communities </h6>
+                  <ul>
+                      <li>Challeges women face in a man field profession .....</li>
+                      <li>Let's air out frustration on so many issues .....</li>
+                      <li>Unpopular takes about the dating scene in Lagos</li>
+                  </ul>
+              </div>
+              <div class="one-three">
+                <div class="irregular">
+                  <img style="width: 70px; height: 70px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">
+                </div>
+                <form action="/logout" method="POST">
+                  <img src="images/Logout.png" alt=""> <b> <a href="/logout">Logout</a> </b> <br>
+                </form>
+                  <img src="images/User Add.png" alt=""> <b>Add Another Account</b> <br>
+                  <img src="images/trash.png" alt=""> <b>Delete Account</b>
+              </div>
+            </div>
+            </div>
+            <div class="col-6">
+              <div class="two">
+                  <div class="two-one">
+                      <b>Profile</b>
+                      
+                      <img src="/images/search-status.png" alt="">
+                    </div>
+                  <div class="two-two">
+                      <img src="/images/Rectangle 30.png" alt="">
+      
+                    </div>
+                  <div class="two-three">
+                      <img src="<%=user.image.url%>" alt="">
+                      <img id="tti" src="/images/material-symbols_photo-camera-outline.png" alt="">
+                    </div>
+                  <div class="two-four">
+                      <h6><%=user.firstName%> <%=user.lastName%></h6>
+                      <h6><%=user.location%>.</h6>
+                      <!-- <p>Affiliate marketer who enjoys discussing the various difficulties I have in my work and who would want to share with everyone what most people don't tell you well about profession.</p> -->
+                      <p><%=user.aboutMe%></p>
+                      <!-- <a href=""><button>Edit Profile</button></a> -->
+                  <% if( currentUser.equals(posts[0].author._id)) { %> 
+                      <ul class="one-a">
+                         <a href=""> <li> <b> My Posts</b></li> </a>
+                          <a href="">  <li><b>Comments</b></li></a>
+                          <a href=""> <li><b>About Me </b></li></a>
+                          <a href=""><li><b>Likes</b></li></a>
+                          <a href=""><li><b>Followers(990)</b></li></a>
+                          <a href=""><li><b>Following(112)</b></li></a>
+                      </ul>
+                  <% } %>
+
+                  </div>
+                  <% if( currentUser.equals(posts[0].author[0]._id)) { %> 
+                  <a class="bfix" href="">Edit Profile</a>
+                  <% } %>
+
+                  <div class="two-five">
+                      <img style="border-radius: 50px;" src="<%=posts[0].author[0].image.url %>" alt="">  <h6><%=posts[0].author[0].firstName %> <%=posts[0].author[0].lastName %> </h6> <br>
+                      <b><%=posts[0].title %> </b> <b style="color: #4F7C4F; margin-left: 10px"> #<%=posts[0].hashtag%></b>
+                      <p><%=posts[0].body %></p>
+                      <!-- <p>Lorem ipsum dolor sit amet consectetur. Et ac ultrices tincidunt at placerat mauris. Ullamcorper tincidunt tincidunt scelerisque viverra id volutpat pellentesque. Tristique pretium quis porttitor vitae. Iaculis leo dui enim dignissim metus non.</p>  -->
+                      <ul><a href="/post/<%=posts[0]._id %>"><li>Comments</li></a></ul>
+                      <img id="pin" src="/images/Pin.png" alt="">
+      
+                  </div>
+                  <div class="two-six">
+                    <% for(post of posts) {%>
+                      <img style="border-radius: 40px;" src="<%=post.author[0].image.url %>" alt="">  <h6><%=post.author[0].firstName %> <%=post.author[0].lastName %> </h6> <br>
+                      <b><%=post.title %> </b> <b style="color: #4F7C4F; margin-left: 10px"> #<%=post.hashtag%> </b>
+                      <p><%=post.body %>.</p>
+                      <ul><a href="/post/<%=post._id %>"><li> Comments</li></a></ul>
+                      <% } %>
+                  </div>
+            </div>
+            </div>
+            <div class="col" id="three">
+              <div class="sec-three-one">
+              <h6>You Might Be Interested</h6>
+              <hr>
+              <h6>Social AR/VR Experiences</h6>
+              <p>Augmented Reality(AR) And Virtual Reality(VR) Holds Tremendous Promise For Changing The Way Business And Consumers Operate And Has The Ability To Tranform Nearly Every Industry And Solve Many Real World Problems <br> Let's Talk About It ....</p>
+            </div>
+              <div class="sec-three-two"> 
+                <img src="/images/Group 15.png" alt="">  
+                <button><b> Join </b></button>
+                <hr>
+              </div>
+              <div class="sec-three-three">
+                <img src="/images/image 1.png" alt="">
+                <p class="non-link">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim odio aut magni quaerat eligendi vel quis ut, eos incidunt nam laboriosam laudantium quidem.</p>
+                <p class="link">https://stackoverflow.com/ <br> questions/4383117/how-can-fake-url-on-hover-and-right-click-copy-link-localtion-but-not-on-the-c</p>
+              </div>
+              <div>
+      
+              </div>
+      
+      
+            </div>
+          </div>
+      </div>
+      
+      
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
