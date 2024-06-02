@@ -71,7 +71,7 @@
     </style>
 
 </head>
-<body class="relative">
+<body class="min-h-screen flex flex-col">
   <header class=" h-16 absolute z-50 w-[100%] flex justify-center bg-[#114E11]">
       <nav  class="z-50 flex flex-row justify-between h-16 items-center px-4 sm:px-12 lg:px-16 max-page-width">
           <!-- Desktop view -->
@@ -111,37 +111,12 @@
           <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Connect</a>
       </div>
   </div>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
-        <div class="container-fluid">
-          <a class="navbar-brand text-light" href="hero.html"><img class="nbi" src="images/Logo.png" alt=""></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse offset-1" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" aria-current="page" href="#">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" href="clothing.html">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" href="gadgets.html">Explore</a>
-              </li>
 
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" href="">Connect</a>
-              </li>
-            </ul>
-        </div>
-          </div>
-        </div>
-      </nav> -->
-
-      <main class="md:pr-16 lg:pr-28 h-full md:h-[100vh] flex justify-center">
-        <div class="main-one flex pt-20 flex-col-reverse md:flex-row items-center h-[100%] max-page-width">
+      <main class="md:pr-16 lg:pr-28 flex-grow flex justify-center items-center overflow-auto">
+        <div class="main-one flex flex-col-reverse md:flex-row items-center h-[100%] max-page-width">
           <div class="one-one">
-            <img class="w-full h-full md:w-[500px] lg:w-[650px] lg:h-[680px] object-contain" src="images/Female hand holding iPhone 14 Pro mockup (Mockuuups Studio).png" alt="">
+            <img class="w-full h-full md:w-[500px] lg:w-[650px] lg:h-[680px] object-contain" 
+            src="images/Female hand holding iPhone 14 Pro mockup (Mockuuups Studio).png" alt="">
           </div>
 
           <div class="one-two flex flex-col gap-y-8 z-40">
@@ -172,20 +147,16 @@
         <script>
           const hamburger = document.getElementById('hamburger');
           const hamMenu = document.getElementById('hamMenu');
-          // const body = document.body;
           const closeIcon = document.getElementById('closeIcon');
 
           hamburger.addEventListener('click', function() {
               // alert('p')
               hamMenu.classList.toggle('open');
-              // closeIcon.classList.toggle('hidden');
-              // body.classList.toggle('menu-open');
           });
 
           closeIcon.addEventListener('click', function() {
               hamMenu.classList.toggle('open');
               closeIcon.classList.remove('open');
-              // body.classList.toggle('menu-open');
           });
         </script>
 </body>
