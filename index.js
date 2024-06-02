@@ -1,6 +1,6 @@
-if(process.env.NODE_ENV !== "production") {
-    require('dotenv').config();
-}
+// if(process.env.NODE_ENV !== "production") {
+//     require('dotenv').config();
+// }
 
 const express = require('express');
 const mongoose = require ('mongoose');
@@ -42,7 +42,7 @@ const { use } = require('passport');
 
 
 
-mongoose.connect('mongodb://localhost:27017/unPopTakeDb', {
+mongoose.connect('mongodb://127.0.0.1:27017/unPopTakeDb', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -86,7 +86,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-    console.log(req.session)
+    // console.log(req.session)
     // console.log(req.user)
    res.locals.currentUser = req.user;
    res.locals.success = req.flash('success');

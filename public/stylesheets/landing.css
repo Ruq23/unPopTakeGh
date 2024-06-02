@@ -1,11 +1,11 @@
-.one-one img {
+/* .one-one img {
     width: 650px;
     height: 680px;
-}
+} */
 
 .main-one {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 #io {
@@ -19,15 +19,15 @@ main {
     background-image: url('/images/Vector.png');
     background-size: cover;
     background-size: 100% 100%;
-    height: 670px;
-    margin-top: -47px;
+    /* height: 100vh; */
+    /* margin-top: -47px; */
 }
 
-.one-two {
-    padding-top: 200px;
-}
+/* .one-two {
+    margin-top: 200px;
+} */
 
-.one-two h1 {
+/* .one-two h1 {
     text-align: end;
     margin-bottom: 30px;
     font-size: 80px;
@@ -37,12 +37,15 @@ main {
 .one-two h3 {
     word-spacing: 5px;
 }
+*/
 
 .one-two button {
     padding: 10px 30px;
-    margin-top: 23px;
-}
-
+    /* margin-top: 23px; */
+} 
+.one-two h3 {
+   font-size: 24px;
+} 
 
 #bo {
     background-color: #114E11;
@@ -51,21 +54,28 @@ main {
 }
 
 #bt {
-    background-color: inherit;
+    /* background-color: white; */
     border-color: #114E11;
 }
 
 #ao {
     position: relative;
-    left: -80px;
+    /* left: -80px; */
 }
 
 #at {
     position: relative;
-    left: 130px;
+    /* left: 130px; */
 }
 
 
-#ht {
+/* #ht {
     text-align: end;
+} */
+
+.btn-div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 40px;
 }
