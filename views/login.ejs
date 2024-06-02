@@ -5,49 +5,136 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>unPopTake</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="/stylesheets/unAuthNav.css">
     <link rel="stylesheet" href="/stylesheets/login.css">
 
+  <!-- tailwind cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/64af63ddf7.js" crossorigin="anonymous"></script>
 
+  <style>
+    #hamMenu {
+      position: fixed;
+      top: 0;
+      right: -70%;
+      width: 70%;
+      height: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: right 0.5s ease;
+    }
+
+    #hamMenu.open {
+      right: 0;
+    }
+
+    .nav-link {
+      font-weight: 700;
+      font-size: 18px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #hamMenu.open .nav-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #hamMenu.open .nav-link:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(3) {
+      transition-delay: 0.5s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(4) {
+      transition-delay: 0.7s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(5) {
+      transition-delay: 0.9s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(6) {
+      transition-delay: 1s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(7) {
+      transition-delay: 1.1s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(8) {
+      transition-delay: 1.2;
+    }
+
+    .menu-open {
+      overflow-y: hidden;
+    }
+
+    .max-page-width {
+      max-width: 1500px;
+      width: 100%;
+    }
+  </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
-        <div class="container-fluid">
-          <a class="navbar-brand text-light" href="hero.html"><img class="nbi" src="images/Logo.png" alt=""></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse offset-1" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" aria-current="page" href="#">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" href="clothing.html">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" href="gadgets.html">Explore</a>
-              </li>
+<body class="min-h-screen flex flex-col">
+  <header class=" h-16 absolute z-50 w-[100%] flex justify-center bg-[#114E11]">
+    <nav class="z-50 flex flex-row justify-between h-16 items-center px-4 sm:px-12 lg:px-16 max-page-width">
+      <!-- Desktop view -->
+      <div class="flex md:hidden w-[40%]">
+        <a href="/">
+          <img class="nbi w-40 h-16" src="images/Logo.png" alt="">
+        </a>
+      </div>
+      <a class="hidden md:flex" href="/">
+        <img class="nbi w-40 h-16" src="images/Logo.png" alt="">
+      </a>
+      <div class="gap-4 hidden md:flex md:gap-8 lg:gap-14 text-white">
+        <a href="/" class="hover:underline ">Home</a>
+        <a href="/" class="hover:underline">About Us</a>
+        <a href="/" class="hover:underline">Contact</a>
+        <a href="/" class="hover:underline">Explore</a>
+        <a href="/" class="hover:underline">Connect</a>
+      </div>
 
-              <li class="nav-item">
-                <a class="nav-link active pe-5 text-light" href="">Connect</a>
-              </li>
-            </ul>
-        </div>
-          </div>
-        </div>
-      </nav>
+      <!-- hamburger button -->
+      <button id="hamburger" class="md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" id="hamburger-icon" class="h-7 w-7 text-white" fill="none"
+          viewBox="0 0 28 28" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h20M4 14h20m-7 8h7" />
+        </svg>
+      </button>
+    </nav>
+  </header>
+  <!-- Mobile view -->
+  <div id="hamMenu" class="  right-0 bg-white p-4 z-50">
+    <button id="closeIcon" class="absolute top-4 right-0 mr-4 sm:mr-12"><i class="fa-solid fa-xmark fa-xl"></i></button>
+
+    <div class="flex flex-col  mt-8">
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Home</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">About Us</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Contact</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Explore</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Connect</a>
+    </div>
+  </div>
       <%- include('./partials/flash') %>
 
-      <main>
-        <div class="main-one">
-          <div class="one-one">
-            <img src="images/Female hand holding iPhone 14 Pro mockup (Mockuuups Studio).png" alt="">
+      <main class=" lg:pr-20 xl:pr-28 flex-grow flex justify-center items-center overflow-auto">
+        <div class="main-one flex  flex-col-reverse md:flex-row justify-center lg:justify-between items-center h-[100%] max-page-width">
+          <div class="one-one hidden lg:block">
+            <img class="w-full h-full md:w-[500px] lg:w-[550px] lg:h-[680px] object-contain"
+            src="images/Female hand holding iPhone 14 Pro mockup (Mockuuups Studio).png" alt="">
           </div>
-          <div class="one-two">
+
+          <div class="one-two sm:rounded-[20px] px-5 py-7 md:px-10 md:py-12 mt-20">
+
             <h6><b> Login to your Account</b></h6>
             <p>Sign In Today, Continue To Share Interesting Unpopular Opinions To The World</p>
+
             <form action="/login" method="POST">
                 <div>
                 <input type="text" placeholder="Username" name="username" id="username" required>
@@ -58,7 +145,7 @@
             </div>
             <button id="bo">Sign In</button> <br>
             <div class="hrr">
-            <hr> <span> Or </span> <hr>
+            <!-- <hr> <span> Or </span> <hr> -->
             <div class="db">
                 <button id="dbo"><img src="images/flat-color-icons_google.png" alt=""> Continue With Google</button>
                 <button id="dbt"> <img src="images/logos_facebook.png" alt=""> Continue With Facebook</button>
@@ -75,5 +162,20 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+        <script>
+          const hamburger = document.getElementById('hamburger');
+          const hamMenu = document.getElementById('hamMenu');
+          const closeIcon = document.getElementById('closeIcon');
+    
+          hamburger.addEventListener('click', function() {
+              // alert('p')
+              hamMenu.classList.toggle('open');
+          });
+    
+          closeIcon.addEventListener('click', function() {
+              hamMenu.classList.toggle('open');
+              closeIcon.classList.remove('open');
+          });
+        </script>
 </body>
 </html>
