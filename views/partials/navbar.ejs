@@ -1,4 +1,77 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
+<header class=" h-16 absolute z-50 w-[100%] flex justify-center bg-[#114E11]">
+  <nav class="z-50 flex flex-row justify-between h-16 items-center px-4 sm:px-12 lg:px-16 max-page-width">
+    <!-- Desktop view -->
+    <div class="flex md:hidden w-[40%]">
+      <a href="/">
+        <img class="nbi w-40 h-16" src="/images/Logo.png" alt="">
+      </a>
+    </div>
+
+    <a class="hidden md:flex" href="/">
+      <img class="nbi w-40 h-16" src="/images/Logo.png" alt="">
+    </a>
+
+    <div class="gap-4 hidden md:flex md:gap-8 lg:gap-14 text-white">
+      <a href="/" class="hover:underline ">Home</a>
+      <a href="/" class="hover:underline">My Profile</a>
+      <a href="/" class="hover:underline">Activity</a>
+      <a href="/" class="hover:underline">Settings</a>
+      <a href="/" class="hover:underline">Connect</a>
+    </div>
+
+    <div id="navbarDropdown" class="hidden md:flex">
+      <button class="flex items-center h-full">
+        <img id="navbarDropdownImg" class=" " src="images/pp.jpg" alt="">
+      </button>
+
+      <div class="dropdown-menu hidden flex flex-col gap-2 bg-white p-4 absolute right-0 mt-1 w-[200px]">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <!-- hamburger button -->
+    <button id="hamburger" class="md:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" id="hamburger-icon" class="h-7 w-7 text-white" fill="none"
+        viewBox="0 0 28 28" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h20M4 14h20m-7 8h7" />
+      </svg>
+    </button>
+  </nav>
+</header>
+<!-- Mobile view -->
+<div id="hamMenu" class="  right-0 bg-white p-4 z-50">
+  <button id="closeIcon" class="absolute top-4 right-0 mr-4 sm:mr-12"><i class="fa-solid fa-xmark fa-xl"></i></button>
+
+  <div class="flex flex-col  mt-8">
+    <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Home</a>
+    <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">About Us</a>
+    <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Contact</a>
+    <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Explore</a>
+    <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Connect</a>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const hamMenu = document.getElementById('hamMenu');
+  const closeIcon = document.getElementById('closeIcon');
+
+  hamburger.addEventListener('click', function() {
+      // alert('p')
+      hamMenu.classList.toggle('open');
+  });
+
+  closeIcon.addEventListener('click', function() {
+      hamMenu.classList.toggle('open');
+      closeIcon.classList.remove('open');
+  });
+</script>
+
+
+
+<!-- <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="hero.html"><img class="nbi" src="images/Logo.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,5 +112,5 @@
   </div>
     </div>
   </div>
-</nav>
+</nav> -->
 

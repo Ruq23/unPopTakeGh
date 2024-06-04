@@ -4,14 +4,125 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="/stylesheets/navbar.css">
   <link rel="stylesheet" href="/stylesheets/container.css">
   <link rel="stylesheet" href="/stylesheets/myprofile.css">
   <title>Document</title>
+
+  <!-- tailwind cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/64af63ddf7.js" crossorigin="anonymous"></script>
+
+  <style>
+    #hamMenu {
+      position: fixed;
+      top: 0;
+      right: -70%;
+      width: 70%;
+      height: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: right 0.5s ease;
+    }
+
+    #hamMenu.open {
+      right: 0;
+    }
+
+    .nav-link {
+      font-weight: 700;
+      font-size: 18px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #hamMenu.open .nav-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #hamMenu.open .nav-link:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(3) {
+      transition-delay: 0.5s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(4) {
+      transition-delay: 0.7s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(5) {
+      transition-delay: 0.9s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(6) {
+      transition-delay: 1s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(7) {
+      transition-delay: 1.1s;
+    }
+
+    #hamMenu.open .nav-link:nth-child(8) {
+      transition-delay: 1.2;
+    }
+
+    .menu-open {
+      overflow-y: hidden;
+    }
+
+    .max-page-width {
+      max-width: 1500px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
+  <header class=" h-16 absolute z-50 w-[100%] flex justify-center bg-[#114E11]">
+    <nav class="z-50 flex flex-row justify-between h-16 items-center px-4 sm:px-12 lg:px-16 max-page-width">
+      <!-- Desktop view -->
+      <div class="flex md:hidden w-[40%]">
+        <a href="/">
+          <img class="nbi w-40 h-16" src="images/Logo.png" alt="">
+        </a>
+      </div>
+      <a class="hidden md:flex" href="/">
+        <img class="nbi w-40 h-16" src="images/Logo.png" alt="">
+      </a>
+      <div class="gap-4 hidden md:flex md:gap-8 lg:gap-14 text-white">
+        <a href="/" class="hover:underline ">Home</a>
+        <a href="/" class="hover:underline">About Us</a>
+        <a href="/" class="hover:underline">Contact</a>
+        <a href="/" class="hover:underline">Explore</a>
+        <a href="/" class="hover:underline">Connect</a>
+      </div>
+  
+      <!-- hamburger button -->
+      <button id="hamburger" class="md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" id="hamburger-icon" class="h-7 w-7 text-white" fill="none"
+          viewBox="0 0 28 28" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h20M4 14h20m-7 8h7" />
+        </svg>
+      </button>
+    </nav>
+  </header>
+  <!-- Mobile view -->
+  <div id="hamMenu" class="  right-0 bg-white p-4 z-50">
+    <button id="closeIcon" class="absolute top-4 right-0 mr-4 sm:mr-12"><i class="fa-solid fa-xmark fa-xl"></i></button>
+  
+    <div class="flex flex-col  mt-8">
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Home</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">About Us</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Contact</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Explore</a>
+      <a href="/" class="hover:underline hover:text-[#10B981] py-4 border-b nav-link">Connect</a>
+    </div>
+  </div>
   <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-5 pt-1 pb-1">
     <div class="container-fluid">
       <a class="navbar-brand text-light" href="hero.html"><img class="nbi" src="/images/Logo.png" alt=""></a>

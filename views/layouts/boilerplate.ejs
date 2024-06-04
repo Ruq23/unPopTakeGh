@@ -10,11 +10,80 @@
     <link rel="stylesheet" href="/stylesheets/container.css">
     <link rel="stylesheet" href="/stylesheets/myprofile.css">
 
+    <!-- tailwind cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/64af63ddf7.js" crossorigin="anonymous"></script>
 
+    <style>
+        #hamMenu {
+          position: fixed;
+          top: 0;
+          right: -70%;
+          width: 70%;
+          height: 100%;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          transition: right 0.5s ease;
+        }
+    
+        #hamMenu.open {
+          right: 0;
+        }
+    
+        .nav-link {
+          font-weight: 700;
+          font-size: 18px;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    
+        #hamMenu.open .nav-link {
+          opacity: 1;
+          transform: translateY(0);
+        }
+    
+        #hamMenu.open .nav-link:nth-child(2) {
+          transition-delay: 0.3s;
+        }
+    
+        #hamMenu.open .nav-link:nth-child(3) {
+          transition-delay: 0.5s;
+        }
+    
+        #hamMenu.open .nav-link:nth-child(4) {
+          transition-delay: 0.7s;
+        }
+    
+        #hamMenu.open .nav-link:nth-child(5) {
+          transition-delay: 0.9s;
+        }
+    
+        #hamMenu.open .nav-link:nth-child(6) {
+          transition-delay: 1s;
+        }
+    
+        #hamMenu.open .nav-link:nth-child(7) {
+          transition-delay: 1.1s;
+        }
+    
+        #hamMenu.open .nav-link:nth-child(8) {
+          transition-delay: 1.2;
+        }
+    
+        .menu-open {
+          overflow-y: hidden;
+        }
+    
+        .max-page-width {
+          max-width: 1500px;
+          width: 100%;
+        }
+      </style>
 </head>
-<body class="d-flex flex-column vh-100">
+<body class=" flex flex-col min-h-screen ">
     <%- include('../partials/navbar') %> 
-    <main class="container mt-2">
+    <main class="container mx-auto px-4 sm:px-8 lg:px-0 xl:px-0 flex-grow flex justify-center items-center ">
       <%- include('../partials/flash') %>
      <%- body %> 
 </main>
