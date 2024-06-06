@@ -1,14 +1,12 @@
 
 <% if(success && success.length) { %> 
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= success %> 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <div class=" mt-20 text-2xl text-center text-white-800 p-6 rounded-lg bg-[#114E11] dark:bg-[#114E11] dark:text-white-400" role="alert">
+        <%= success %> !
       </div>
     <% } %> 
 
     <% if(error && error.length) { %> 
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <%= error %> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <div class="mt-20 text-2xl text-center text-red-400 p-4 rounded-lg bg-[#114E11] dark:bg-[#114E11] dark:text-[#F32013]" role="alert">
+            <span class="font-medium"> <%= error %> </span>
           </div>
         <% } %> 
