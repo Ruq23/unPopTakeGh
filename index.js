@@ -198,7 +198,7 @@ app.get('/post/:id', catchAsync( async(req, res) => {
         req.flash('error', 'Cannot find this take')
         return res.redirect('/posts')
     }
-    res.render('post_.ejs', {post})
+    res.render('postU.ejs', {post})
 }))
 
 app.get('/posts/:id', catchAsync( async(req, res) => {
@@ -357,7 +357,7 @@ app.get('/login', catchAsync(async(req, res) => {
 //Using Passport Only
 app.post('/login', passport.authenticate('local', {failureRedirect: '/login', keepSessionInfo: true, failureFlash: true}), (req, res) =>{
     req.flash('success', 'Welcome Back')
-    // req.flash('error', 'Invalid Username or Password')
+    req.flash('error', 'Invalid Username or Password')
     console.log(req.user)
     const redirectUrl = req.session.returnTo || '/posts'
     res.redirect(redirectUrl)

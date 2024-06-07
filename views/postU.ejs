@@ -1,0 +1,164 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+  <div class="container mt-20 " style="min-height: 100vh;">
+    <div class="flex flex-col lg:flex-row gap-10" id="row">
+
+      <div class="col hidden lg:block lg:w-1/4">
+        <div class="one flex flex-col gap-6">
+          <div class="one-one px-6 py-6 flex flex-col gap-2">
+            <h6> YOUR INTERESTS </h6>
+            <% if(currentUser) {%>
+              <ul class="flex flex-col gap-2">
+                <% for (let i=0; i < currentUser.interests.length; i++) { %>
+                  <li>
+                    <%= currentUser.interests[i] %>
+                  </li>
+                  <!-- <li>UGC And Micro-Influence Marketing</li>
+                    <li>Live-Stream Shopping</li>
+                    <li>Coding</li>
+                    <li>Video Production</li>
+                    <li>Sustainability In A World That Consumes A Lot</li> -->
+                  <% } %>
+              </ul>
+              <% }else {%>
+                <ul>
+                  <li>Login to access full features</li>
+                </ul>
+                <% } %>
+          </div>
+
+          <div class="one-two px-6 py-6 flex flex-col gap-2">
+            <h6> Communities </h6>
+            <ul class="flex flex-col gap-2">
+              <li>Challeges women face in a man field profession .....</li>
+              <li>Let's air out frustration on so many issues .....</li>
+              <li>Unpopular takes about the dating scene in Lagos</li>
+            </ul>
+          </div>
+          
+          <div class="one-three px-6 py-6 flex flex-col gap-2 text-white">
+            <% if(currentUser) {%>
+              <div class="irregular">
+                <img class="ml-44" style="width: 70px; height: 70px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">
+                <!-- <img style="width: 70px; height: 70px; border-radius: 40px" alt=""> -->
+              </div>
+                <div>
+                  <form method="POST" action="/logout">
+                  <div class="inline-flex">
+                    <img class="w-6" src="/images/Logout.png" alt=""> 
+                   <a class="hover:underline" href="/logout"> <b> Logout </b> </a>  <br>
+                </div>
+                  </form>
+                  <div class="inline-flex">
+                  <img class="w-6" src="/images/User Add.png" alt="">
+                  <a class="hover:underline" href="/"> <b>Add Another Account</b></a>
+                  </div>
+                  <div class="inline-flex">
+                  <img class="w-6" src="/images/trash.png" alt=""> 
+                  <a class="hover:underline" href="/"> <b>Delete Account</b></a>
+                 
+                </div>
+              <!-- <form method="POST" action="/logout">
+                <img class="w-4" src="images/Logout.png" alt=""> <b class="relative -top-6 left-2"> <a href="/logout">Logout</a> </b> <br>
+              </form>
+
+              <img class="w-4" src="images/User Add.png" alt=""> <b class="relative -top-6">Add Another Account</b> <br>
+              <img class="w-4" src="images/trash.png" alt=""> <b class="relative -top-6">Delete Account</b> -->
+            </div>
+
+              <% }else{ %>
+                <div class="irregular">
+                  <p>Login to access full features</p>
+                </div>
+                <% } %>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col order-1 lg:order-2 lg:w-2/4">
+        <div class="two px-6">
+            <div class="two-four" style="position: relative; left: 5px; top: 30px">
+                <img style="border-radius: 55px;" src="<%=post.author[0].image.url %>" alt=""> <a id="two-four-one" href="/profile/<%=post.author[0]._id%>"> <b class="relative -top-12 left-12"><%=post.author[0].username %> </b> </a><br>   
+                   <a id="two-four-one" href="/post/<%=post._id%>"> <b class="relative -top-10 left-12">Unpopular Take On <%=post.title%> -<span> #<%=post.hashtag%></span></b> </a>
+                    <p class="-mt-8 ml-12" style="width: 500px;"><%=post.body%></p>
+                    <% if(currentUser) { %> 
+                      <form class="comment-form" action="/post/<%=post._id%>/comments" method="POST">
+                         <img style="width: 40px; height: 40px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">  <input type="text" class="relative -top-8 left-10 border-2 border-black" name="comment[body]" id="body" placeholder="Comment"> <br>
+                      </form>
+                      <% } %>
+                  </div>
+
+                  <div class="mt-8">
+                    <h5>Comments</h5>
+
+                      <% for (let comment of post.comments) { %> 
+
+                        <div class="-mt-6 mb-4 two-six">
+                              <img style="border-radius: 40px;" src="<%=comment.author.image.url %>" alt="">  <h6> <a style="text-decoration: none; color: black;" href="/profile/<%=comment.author._id%>"> <%=comment.author.username %> </a> </h6> <br>
+                              <b>View on <%=post.title %> </b> <b style="color: #4F7C4F; margin-left: 10px"> #<%=post.hashtag%> </b>
+                              <p><%=comment.body %>.</p>
+                        <% if( currentUser && comment.author.equals(currentUser._id)) { %> 
+                              <form action="/post/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <Button class="btn btn-sm btn-danger">Delete</Button>
+                            </form>
+                            <% } %>
+                          </div>
+
+                        <!-- <div class="card mb-3" >
+                      <div class="mb-3 card-body">
+                        <h5 class="card-title"><%=comment.author.username%></h5>
+                        <h5 class="card-title"><%=comment.name%></h5>
+                        <p class="starability-result" data-rating="<%=comment.rating%>">
+                          Rated: <%=comment.rating%> stars
+                        </p>
+                        <p class="card-text"><%=comment.body%></p>
+                        <% if( currentUser && comment.author.equals(currentUser._id)) { %> 
+                        <form action="/post/<%=post._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                            <Button class="btn btn-sm btn-danger">Delete</Button>
+                        </form>
+                        <% } %>
+                      </div>
+                    </div> -->
+                      <% } %>
+                        
+                </div>
+
+        </div>
+      </div>
+
+      <div class="col hidden lg:block order-1 lg:order-3 lg:w-1/4 px-6 py-6 flex flex-col gap-2" id="three">
+        <div class="sec-three-one flex flex-col gap-2">
+          <h6>You Might Be Interested</h6>
+          <hr>
+          <h6 class="font-medium">Social AR/VR Experiences</h6>
+          <p>Augmented Reality(AR) And Virtual Reality(VR) Holds Tremendous Promise For Changing The Way Business And
+            Consumers Operate And Has The Ability To Tranform Nearly Every Industry And Solve Many Real World Problems
+            <br> Let's Talk About It ....</p>
+        </div>
+
+        <div class="sec-three-two flex justify-between">
+          <img src="/images/Group 15.png" alt="">
+          <button class="px-4"><b> Join </b></button>
+        </div>
+
+        <hr>
+        
+        <div class="sec-three-three">
+          <img src="/images/image 1.png" alt="">
+          <p class="non-link">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim odio aut magni quaerat
+            eligendi vel quis ut, eos incidunt nam laboriosam laudantium quidem.</p>
+          <p class="link">https://stackoverflow.com/ <br>
+            questions/4383117/how-can-fake-url-on-hover-and-right-click-copy-link-localtion-but-not-on-the-c</p>
+        </div>
+        <!-- <div>
+
+        </div> -->
+
+
+      </div>
+    </div>
+
+  </div>

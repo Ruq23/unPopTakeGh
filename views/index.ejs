@@ -135,7 +135,7 @@
               <form class="comment-form" action="/post/<%=post._id%>/comments" method="POST">
                 <% if(currentUser){ %>
                   <img style="width: 40px; height: 40px; border-radius: 40px" src="<%=currentUser.image.url%>" alt="">
-                  <input class="relative -top-6 left-12 border-2 " type="text" name="comment[body]" id="body" placeholder="Comment"> <br>
+                  <input class="relative -top-6 left-12 border-2 border-black " type="text" name="comment[body]" id="body" placeholder="Comment"> <br>
                   <% }else{ %>
                     <img style="width: 40px; height: 40px; border-radius: 40px" src="#" alt=""> <input type="text"
                       name="comment[body]" id="body" placeholder="Comment"> <br>
